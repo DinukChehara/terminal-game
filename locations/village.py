@@ -1,4 +1,7 @@
 from locations.location import Location
+import os
+import time
+from player import Player
 
 class Village(Location):
     
@@ -63,7 +66,7 @@ class Village(Location):
             }
 
         
-        
+    
     def __repr__(self):
         return super().__repr__()
     
@@ -76,3 +79,84 @@ class Village(Location):
     
     def giveQuestDialogue(self):
         return super().giveQuestDialogue()
+    
+    def questFindChiken(self, player:Player):
+        #location 1 - The well
+        while True:
+            os.sys("clear")
+            print(f"You arrive at the well where Clucky was last seen. There are feathers scattered around, and you hear faint clucking in the distance.")
+            time.sleep(2)
+            print("\nChoose:\n 1. Follow the clucking sound\n 2. Search around the well for clues\n 3. Return to the farm for more information.\n")
+            
+            choice = input(">> ")
+            os.sys("clear")
+            if choice == "1":
+                print("\nYou head towards the sound, leading you deeper into the forest.\n")
+                break
+            elif choice == "2":
+                print("\nYou find a trial of feathers leading toward the forest.\n")
+                break
+            elif choice == "3":
+                print("\nFarmer: 'I don't know much else, but I hopeyou find her!'\n")
+                break
+            else:
+                continue
+        
+        #location 2 -The forest
+        while True:
+            os.sys("clear")
+            print(f"The forest is dense and slightly eerie. You hear the clucking sound again, but it’s faint.")
+            time.sleep(2)
+            print("\nChoose:\n 1. Follow the clucking sound deeper into the forest.\n 2. Call out for Clucky.\n 3. Turn back—it’s too dangerous.\n")
+            
+            choice = input(">> ")
+            os.sys("clear")
+            if choice == "1":
+                print("\nYou venture further and find Clucky stuck in a bush.\n")
+                break
+            elif choice == "2":
+                print("\nClucky responds with loud clucking, and you locate her nearby.\n")
+                break
+            elif choice == "3":
+                print("\nYou return to the village without finding Clucky. The Farmer is disappointed.'\n")
+                break
+            else:
+                continue
+        
+        #location 3 - Deep forest
+        while True:
+            os.sys("clear")
+            print(f"You find Clucky stuck in a bush, flapping her wings helplessly.")
+            time.sleep(2)
+            print("\nChoose:\n 1. Free Clucky from the bush.\n 2. Leave her—she’s too much trouble.\n")
+            
+            choice = input(">> ")
+            os.sys("clear")
+            if choice == "1":
+                print("\nYYou carefully untangle her and pick her up.\n")
+                time.sleep(2)
+                print("Famer: 'You founde her! Thank you so much! Here's a reward for your help.'")
+                time.sleep(1)
+                print("+20 Coins\n+1 Completed Quest\n+1 Level")
+
+                self.quest_dialogues["Farmer"]["completed"] = True
+                player.increaseQuestsCompleted(1)
+                player.addCoins(20)
+                player.increaseLevel(1)
+                break
+            elif choice == "2":
+                print("\nYou abandon Clucky and return to the village. The Farmer is upset.\n")
+                time.sleep(2)
+                print("Famer: 'Oh no...I hope she's okay. Please keep looking if you can.'")
+                time.sleep(2)
+                print("You failed the quest!")
+                break
+            else:
+                continue
+        time.sleep(3)
+        os.sys("clear")
+
+
+
+
+

@@ -12,6 +12,7 @@ class Player:
         self.attack_damage_multiplier = 1
         self.attack_damage = 1 * self.attack_damage_multiplier
         self.quests_completed = 0
+        self.coins = 0
 
         self.attributes = {
             "max_health" : self.max_health,
@@ -21,11 +22,12 @@ class Player:
             "level" : self.level,
             "attack_damage_multiplier" : self.attack_damage_multiplier,
             "attack_damage" : self.attack_damage,
-            "quests_completed" : self.quests_completed
+            "quests_completed" : self.quests_completed,
+            "coins" : self.coins
         }
 
     def __repr__(self):
-        return f"Name: {self.name} | Health: {self.health}/{self.max_health} | Level: {self.level} | Attack Damage: {self.attack_damage} | Inventory: {self.inventory} | Location: {self.location} | Quests Completed: {self.quests_completed}"
+        return f"Name: {self.name} | Health: {self.health}/{self.max_health} | Level: {self.level} | Attack Damage: {self.attack_damage} | Inventory: {self.inventory} | Location: {self.location} | Quests Completed: {self.quests_completed} | Coins: {self.coins}"
 
     def say(self, message: str):
         print(f"{self.name}(Player): {message}")
@@ -76,5 +78,16 @@ class Player:
         self.quests_completed = value
     
     def increaseQuestsCompleted(self, amount):
-        self.quests_completed += amount
-            
+        self.quests_completed += amount       
+
+    def setCoins(self, value):
+        if value<0:
+            self.coins = 0
+        else:
+            self.coins = value
+
+    def addCoins(self, amount):
+        self.coins += amount
+
+    def subtractCoins(self, amount):
+        self.coins -= amount

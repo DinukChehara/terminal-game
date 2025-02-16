@@ -7,6 +7,7 @@ from player import Player
 
 #locations
 village = Village()
+player = Player()
 
 class Game:
 
@@ -130,10 +131,6 @@ class Game:
         time.sleep(2)
         os.system("clear")
         pass
-            
 
-             
-game = Game()
-
-player = Player()
-game.load()
+        if player.location == "":
+            player.setLocation("Village")            
