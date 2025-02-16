@@ -1,0 +1,11 @@
+{
+    "nigga": {
+        "max_health": 77,
+        "health": 56,
+        "location": "Village",
+        "inventory": ["sword", "monkeys"],
+        "level": 0,
+        "attack_damage_multiplier": 3,
+        "attack_damage": 1
+    }
+}
