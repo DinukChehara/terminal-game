@@ -77,19 +77,19 @@ class Village(Location):
         'Welcome, traveler! Our village could use your help. Speak to the villagers to learn more.'
         """)
     
-    def giveQuestDialogue(self):
-        return super().giveQuestDialogue()
+    def giveQuestDialogue(self, player_name):
+        return super().giveQuestDialogue(player_name)
     
-    def questFindChiken(self, player:Player):
+    def questFindChiken(self):
         #location 1 - The well
         while True:
-            os.sys("clear")
+            os.system("clear")
             print(f"You arrive at the well where Clucky was last seen. There are feathers scattered around, and you hear faint clucking in the distance.")
             time.sleep(2)
             print("\nChoose:\n 1. Follow the clucking sound\n 2. Search around the well for clues\n 3. Return to the farm for more information.\n")
             
             choice = input(">> ")
-            os.sys("clear")
+            os.system("clear")
             if choice == "1":
                 print("\nYou head towards the sound, leading you deeper into the forest.\n")
                 break
@@ -140,9 +140,6 @@ class Village(Location):
                 print("+20 Coins\n+1 Completed Quest\n+1 Level")
 
                 self.quest_dialogues["Farmer"]["completed"] = True
-                player.increaseQuestsCompleted(1)
-                player.addCoins(20)
-                player.increaseLevel(1)
                 break
             elif choice == "2":
                 print("\nYou abandon Clucky and return to the village. The Farmer is upset.\n")

@@ -5,10 +5,6 @@ import os
 from locations.village import Village
 from player import Player
 
-#locations
-village = Village()
-player = Player()
-
 class Game:
 
     def __init__(self): 
@@ -28,7 +24,7 @@ class Game:
         #location : level
 
         self.locations = {
-            village.name: village.required_level,
+            "village" : 0,
             "forest": 0,
             "castle": 1,
             "dungeon": 2
@@ -126,11 +122,18 @@ class Game:
             player.attributes[key] == attributes[key]
         return player
     
-    def start():
+    def start(player):
         print("Starting the game!")
         time.sleep(2)
         os.system("clear")
         pass
 
         if player.location == "":
-            player.setLocation("Village")            
+            player.setLocation("Village")
+    
+    def giveQuests(self, player, village):
+        
+        if player.quest_index == 0: #village quest 1: Find the chicken
+
+            if village.giveQuestDialogue(player.name):
+                village.questFindChiken()

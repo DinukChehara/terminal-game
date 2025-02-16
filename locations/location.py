@@ -68,3 +68,5 @@ class Location:
                 break
             else:
                 continue
+        if user_response == "1":
+            return True

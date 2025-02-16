@@ -13,6 +13,7 @@ class Player:
         self.attack_damage = 1 * self.attack_damage_multiplier
         self.quests_completed = 0
         self.coins = 0
+        self.quest_index = 0
 
         self.attributes = {
             "max_health" : self.max_health,
@@ -77,8 +78,8 @@ class Player:
     def setQuestsCompleted(self, value):
         self.quests_completed = value
     
-    def increaseQuestsCompleted(self, amount):
-        self.quests_completed += amount       
+    def incrementQuestsCompleted(self, amount = 0):
+        self.quests_completed += amount
 
     def setCoins(self, value):
         if value<0:
@@ -91,3 +92,10 @@ class Player:
 
     def subtractCoins(self, amount):
         self.coins -= amount
+
+    def completeQuest(self, reward_coins, reward_levels):
+            self.incrementQuestsCompleted()
+            self.addCoins(reward_coins)
+            self.increaseLevel(reward_levels)
+            self.quest_index +=1
+        
